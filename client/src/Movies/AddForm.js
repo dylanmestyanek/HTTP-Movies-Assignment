@@ -23,8 +23,15 @@ const AddForm = props => {
         axios.post(`http://localhost:5000/api/movies`, movie)
             .then(res => {
                 props.setMovies(res.data)
+                props.history.push("/")
             })
             .catch(err => console.log(err))
+        setMovie({
+            title: '',
+            director: '',
+            metascore: '',
+            stars: []
+        })
     }
 
     console.log(props.movies)

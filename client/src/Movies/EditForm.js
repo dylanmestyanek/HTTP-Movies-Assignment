@@ -32,6 +32,13 @@ const EditForm = (props) => {
                 
             })
             .catch(err => console.log(err))
+            
+        setMovie({
+            title: '',
+            director: '',
+            metascore: '',
+            stars: []
+        })
     }
 
     console.log(props.movies)
