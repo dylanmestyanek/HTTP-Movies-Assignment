@@ -14,19 +14,14 @@ const AddForm = props => {
         const {name, value} = e.target;
         setMovie({
             ...movie,
-            [name]: value
+            [name]: name === 'stars' ? value.split(',') : value
         })
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        const newMovie = {
-            ...movie,
-            stars: movie.stars.split(',') 
-        }
         // Adds movie to end of movie's array and sends user back to home page
-        axios.post(`http://localhost:5000/api/movies`, newMovie)
+        axios.post(`http://localhost:5000/api/movies`, movie)
             .then(res => {
                 props.setMovies(res.data)
                 props.history.push("/")
