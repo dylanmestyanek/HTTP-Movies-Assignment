@@ -24,15 +24,21 @@ const EditForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+        const newMovie = {
+            ...movie,
+            stars: movie.stars.split(',') 
+        }
+        // Maps over movies data, returning all movies that don't match the one you
+        // are editing, IF it is the one you are editing, return the movie from state instead
+        // AKA replaces the old movie with the new info from the one you edited
+        // Redirects user to home page
+        axios.put(`http://localhost:5000/api/movies/${movie.id}`, newMovie)
             .then(res => {
-                // let filteredArr = ; 
                 props.setMovies(props.movies.map(item => item.id === movie.id ? res.data : item))
                 props.history.push("/");
-                
             })
             .catch(err => console.log(err))
-            
+
         setMovie({
             title: '',
             director: '',
@@ -40,8 +46,6 @@ const EditForm = (props) => {
             stars: []
         })
     }
-
-    console.log(props.movies)
 
     return (
         <form onSubmit={handleSubmit}>

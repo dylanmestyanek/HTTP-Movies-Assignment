@@ -33,6 +33,8 @@ export default class Movie extends React.Component {
   };
 
   deleteMovie = () => {
+    //Filters through movies and reeturns all movies that aren't the one you deleted
+    // Redirects user back to home page
     axios.delete(`http://localhost:5000/api/movies/${this.state.movie.id}`)
       .then(res => {
         this.props.setMovies(this.props.movies.filter(item => 
