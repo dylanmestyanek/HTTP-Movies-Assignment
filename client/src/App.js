@@ -5,6 +5,7 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 
 import EditForm from "./Movies/EditForm"
+import AddForm from "./Movies/AddForm"
 import axios from "axios"
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
       <Route path="/update-movie/:id" render={props => 
         <EditForm {...props} movies={movies} setMovies={setMovies} /> 
       }/>
+      <Route path="/add-movie" render={props => <AddForm {...props} setMovies={setMovies} movies={movies} /> }/>
     </>
   );
 };

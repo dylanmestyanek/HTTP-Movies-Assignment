@@ -2,7 +2,6 @@ import React from 'react';
 
 const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
-  console.log(props.movies)
   return (
     <div className="movie-card">
       <h2>{title}</h2>
